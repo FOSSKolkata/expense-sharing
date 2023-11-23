@@ -13,13 +13,31 @@ namespace SplitWiseDesign.Models
             : base(id, amount, paidBy, sharedBy)
         {
             this.exactAmounts = exactAmounts;
+            CalculateSplits(sharedBy);
         }
 
         public override void CalculateSplits(List<User> sharedBy)
         {
-         
-            // write the logic of equally splitting the amount
-            throw new NotImplementedException();
+
+            if (sharedBy.Count != exactAmounts.Count)
+                throw new ArgumentException("The number of exact amounts does not match with number of users");
+
+            if (sharedBy.Count == 0)
+                throw new ArgumentException("Number of sharing users cannot be nil");
+
+            double totalAmt = 0;
+            foreach (double exactAmt in exactAmounts)
+            {
+                totalAmt += exactAmt;
+            }
+
+            if (totalAmt != this.amount) throw new ArgumentException("Invalid exact amounts");
+
+
+            for (int i = 0; i < sharedBy.Count; i++)
+            {
+                this.splits.Add(new Split(sharedBy[i], exactAmounts[i]));
+            }
         }
     }
 }

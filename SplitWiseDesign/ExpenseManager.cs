@@ -41,14 +41,14 @@ namespace SplitWiseDesign
                 {
                     balances.Add(paidTo, 0.0);
                 }
-                balances.Add(paidTo, balances[paidTo] + split.Amount);
+                balances[paidTo] = balances[paidTo] + split.Amount;
 
                 balances = balanceSheet[paidTo];
                 if (!balances.ContainsKey(paidBy))
                 {
                     balances.Add(paidBy, 0.0);
                 }
-                balances.Add(paidBy, balances[paidBy] - split.Amount);
+                balances[paidBy] = balances[paidBy] - split.Amount;
             }
         }
 

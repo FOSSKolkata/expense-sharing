@@ -22,6 +22,10 @@ namespace SplitWiseDesign
             {
                 case ExpenseType.EQUAL:
                     return new EqualExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy);
+                case ExpenseType.EXACT:
+                    return new ExactExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy, args.ExactAmounts);
+                case ExpenseType.PERCENT:
+                    return new PercentExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy, args.Percentages);
 
                 default:
                     throw new ArgumentException("Ivalid expense arguments");

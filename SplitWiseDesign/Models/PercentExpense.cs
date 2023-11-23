@@ -14,6 +14,7 @@ namespace SplitWiseDesign.Models
             : base(id, amount, paidBy, sharedBy)
         {
             this.percentages = percentages;
+            CalculateSplits(sharedBy);
         }
 
         public override void CalculateSplits(List<User> sharedBy)

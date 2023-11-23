@@ -15,6 +15,13 @@ namespace SplitWiseDesign
 
             while (true)
             {
+                // Sample Inputs 
+                // EXPENSE u1 1000 4 u1 u2 u3 u4 EQUAL
+                // EXPENSE u1 1250 2 u2 u3 EXACT 370 880
+                // EXPENSE u4 1100 3 u1 u2 u3 PERCENT 40 20 40
+                // SHOW
+                // SHOW u1
+
                 String command = Console.ReadLine();
                 String[] commands = command.Split(" ");
                 String commandType = commands[0];

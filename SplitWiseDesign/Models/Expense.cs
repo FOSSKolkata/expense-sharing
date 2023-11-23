@@ -19,7 +19,7 @@ namespace SplitWiseDesign.Models
             this.amount = amount;
             this.paidBy = paidBy;
             splits = new List<Split>();
-            CalculateSplits(sharedBy);
+            
         }
 
         public List<Split> Splits { get { return splits; } }
