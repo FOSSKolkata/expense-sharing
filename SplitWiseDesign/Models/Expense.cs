@@ -12,20 +12,20 @@ namespace SplitWiseDesign.Models
         protected double amount;
         protected User paidBy;
         protected List<Split> splits;
-
-        public Expense(string id, double amount, User paidBy, List<User> sharedBy)
+        protected List<User> sharedBy;
+        protected Expense(string id, double amount, User paidBy, List<User> sharedBy)
         {
             this.id = id;
             this.amount = amount;
             this.paidBy = paidBy;
+            this.sharedBy = sharedBy;
             splits = new List<Split>();
-            
         }
 
         public List<Split> Splits { get { return splits; } }
 
         public User PaidBy { get => paidBy; }
 
-        public abstract void CalculateSplits(List<User> sharedBy);
+        public abstract void InitSplits();
     }
 }

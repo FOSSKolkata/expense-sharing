@@ -13,10 +13,9 @@ namespace SplitWiseDesign.Models
             : base(id, amount, paidBy, sharedBy)
         {
             this.exactAmounts = exactAmounts;
-            CalculateSplits(sharedBy);
         }
 
-        public override void CalculateSplits(List<User> sharedBy)
+        public override void InitSplits()
         {
 
             if (sharedBy.Count != exactAmounts.Count)

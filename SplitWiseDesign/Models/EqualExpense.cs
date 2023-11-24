@@ -12,10 +12,9 @@ namespace SplitWiseDesign.Models
         public EqualExpense(string id, double amount, User paidBy, List<User> sharedBy) 
             : base(id, amount, paidBy, sharedBy)
         {
-            this.CalculateSplits(sharedBy);
         }
 
-        public override void CalculateSplits(List<User> sharedBy)
+        public override void InitSplits()
         {
 
             if (sharedBy.Count == 0)

@@ -17,19 +17,24 @@ namespace SplitWiseDesign
         // be instantiated.
         internal static Expense CreateExpense(ExpenseArguments args)
         {
-
+            Expense? expense = null;
             switch (args.ExpenseType)
             {
                 case ExpenseType.EQUAL:
-                    return new EqualExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy);
+                    expense = new EqualExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy);
+                    break;
                 case ExpenseType.EXACT:
-                    return new ExactExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy, args.ExactAmounts);
+                    expense = new ExactExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy, args.ExactAmounts);
+                    break;
                 case ExpenseType.PERCENT:
-                    return new PercentExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy, args.Percentages);
-
+                    expense = new PercentExpense(Guid.NewGuid().ToString(), args.Amount, args.PaidBy, args.SharedBy, args.Percentages);
+                    break;
                 default:
                     throw new ArgumentException("Ivalid expense arguments");
             }
+
+            expense.InitSplits();
+            return expense;
         }
     }
 }

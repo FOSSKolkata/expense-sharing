@@ -14,10 +14,9 @@ namespace SplitWiseDesign.Models
             : base(id, amount, paidBy, sharedBy)
         {
             this.percentages = percentages;
-            CalculateSplits(sharedBy);
         }
 
-        public override void CalculateSplits(List<User> sharedBy)
+        public override void InitSplits()
         {
             if (sharedBy.Count != percentages.Count)
                 throw new ArgumentException("The number of percentages does not match with number of users");
